@@ -22,9 +22,12 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - uses: dtolnay/rust-toolchain@stable
-      - name: Install maturin
-        run: pip install maturin
-      - name: Build and install
-        run: maturin develop --extras test
-      - name: Run tests
-        run: python -m pytest tests/ -v
+      - name: Build wheel
+        run: |
+          pip install maturin
+          maturin build --out dist
+      - name: Install and test
+        run: |
+          pip install dist/*.whl pytest
+          python -m pytest tests/ -v
+        shell: bash
