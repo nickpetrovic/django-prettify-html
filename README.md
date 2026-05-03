@@ -112,6 +112,26 @@ MIDDLEWARE = [
 ]
 ```
 
+## Releasing
+
+Version is defined in one place: `Cargo.toml`. Both `pyproject.toml` and `__init__.__version__` read from it automatically.
+
+To release a new version:
+
+```bash
+# 1. Bump version in Cargo.toml
+# 2. Commit, tag, and push
+git commit -am "v0.2.0"
+git tag v0.2.0
+git push origin main --tags
+```
+
+The GitHub Actions release workflow handles the rest:
+- Builds wheels for Linux (x86/arm64), macOS (x86/arm64), Windows (x86)
+- Builds for Python 3.10, 3.11, 3.12, 3.13, 3.14
+- Publishes to PyPI via trusted publishing
+- Creates a GitHub Release with auto-generated notes and wheel artifacts
+
 ## License
 
 MIT
