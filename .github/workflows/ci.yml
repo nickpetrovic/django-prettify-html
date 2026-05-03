@@ -26,8 +26,12 @@ jobs:
         run: |
           pip install maturin
           maturin build --out dist
-      - name: Install and test
-        run: |
-          pip install dist/*.whl pytest
-          python -m pytest tests/ -v
+      - name: Install wheel and test deps
+        run: pip install pytest dist/*.whl
+        shell: bash
+      - name: Run tests
+        # Run from a temp dir so Python imports the installed package,
+        # not the local django_prettify_html/ source directory.
+        run: python -m pytest ${{ github.workspace }}/tests/ -v
+        working-directory: ${{ runner.temp }}
         shell: bash
