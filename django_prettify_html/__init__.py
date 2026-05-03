@@ -8,4 +8,4 @@ plus a Django middleware for automatic HTML prettification.
 from django_prettify_html._native import format
 
 __all__ = ["format"]
-__version__ = "0.1.0"
+__version__ = "0.1.1"
