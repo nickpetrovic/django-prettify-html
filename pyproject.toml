@@ -35,6 +35,9 @@ classifiers = [
 ]
 keywords = ["django", "html", "formatter", "prettify", "markup_fmt", "rust"]
 
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
 [project.urls]
 Homepage = "https://github.com/nickpetrovic/django-prettify-html"
 Repository = "https://github.com/nickpetrovic/django-prettify-html"
