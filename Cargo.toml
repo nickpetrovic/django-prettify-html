@@ -1,0 +1,15 @@
+[package]
+name = "django-prettify-html"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Python bindings for markup_fmt HTML formatter"
+repository = "https://github.com/nickpetrovic/django-prettify-html"
+
+[lib]
+name = "_native"
+crate-type = ["cdylib"]
+
+[dependencies]
+markup_fmt = "0.27"
+pyo3 = { version = "0.24", features = ["extension-module", "generate-import-lib"] }
