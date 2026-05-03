@@ -26,13 +26,15 @@ jobs:
         run: |
           pip install maturin
           maturin build --out dist
-      - name: Install wheel and test deps
-        run: pip install pytest dist/*.whl
-        shell: bash
-      - name: Run tests
-        # Copy tests to a temp dir so Python imports the installed package,
-        # not the local django_prettify_html/ source directory.
+      - name: Install and test
+        # Install the built wheel + pytest, then run tests from a clean temp
+        # directory to avoid the local django_prettify_html/ shadowing the
+        # installed native extension.
         run: |
-          cp -r tests "$RUNNER_TEMP/tests"
-          python -m pytest "$RUNNER_TEMP/tests" -v
+          pip install pytest
+          pip install dist/*.whl
+          mkdir -p "$RUNNER_TEMP/run_tests"
+          cp -r tests/* "$RUNNER_TEMP/run_tests/"
+          cd "$RUNNER_TEMP/run_tests"
+          python -m pytest . -v --override-ini="rootdir=$RUNNER_TEMP/run_tests"
         shell: bash
