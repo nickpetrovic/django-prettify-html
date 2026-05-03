@@ -9,9 +9,10 @@ def test_basic_format():
 
 
 def test_indent_width():
-    html = '<div><p>Hello</p></div>'
+    # Use a full document so the formatter has block-level nesting to indent
+    html = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body><div><p>Hello</p></div></body></html>'
     result = django_prettify_html.format(html, indent_width=4)
-    assert "    <p>" in result or "    " in result
+    assert "    " in result  # Should contain 4-space indentation
 
 
 def test_format_full_document():
