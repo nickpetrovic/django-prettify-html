@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "django-prettify-html"
-version = "0.1.1"
+dynamic = ["version"]
 description = "Use markup_fmt, the extremely fast HTML formatter, with Django."
 readme = "README.md"
 license = "MIT"

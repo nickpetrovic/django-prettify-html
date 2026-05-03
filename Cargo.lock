@@ -29,7 +29,7 @@ checksum = "25670139e591f1c2869eb8d0d977028f8d05e859132b4c874ecd02a00d3c9174"
 
 [[package]]
 name = "django-prettify-html"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "markup_fmt",
  "pyo3",
