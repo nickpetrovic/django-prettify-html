@@ -30,8 +30,9 @@ jobs:
         run: pip install pytest dist/*.whl
         shell: bash
       - name: Run tests
-        # Run from a temp dir so Python imports the installed package,
+        # Copy tests to a temp dir so Python imports the installed package,
         # not the local django_prettify_html/ source directory.
-        run: python -m pytest ${{ github.workspace }}/tests/ -v
-        working-directory: ${{ runner.temp }}
+        run: |
+          cp -r tests "$RUNNER_TEMP/tests"
+          python -m pytest "$RUNNER_TEMP/tests" -v
         shell: bash
