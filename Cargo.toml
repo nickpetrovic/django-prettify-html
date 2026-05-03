@@ -12,4 +12,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 markup_fmt = "0.27"
-pyo3 = { version = "0.24", features = ["extension-module", "generate-import-lib"] }
+pyo3 = { version = "0.27", features = ["extension-module", "generate-import-lib"] }
