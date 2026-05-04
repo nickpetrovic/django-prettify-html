@@ -112,6 +112,14 @@ MIDDLEWARE = [
 ]
 ```
 
+## Acknowledgments
+
+This project draws inspiration from:
+
+- [django-minify-html](https://github.com/adamchainz/django-minify-html) — the production counterpart that proved the "fast Rust library + Django middleware" pattern works well
+- [markup_fmt](https://github.com/g-plane/markup_fmt) — the formatter that powers this project
+- [djangofmt](https://github.com/UnknownPlatypus/djangofmt) — a Django template formatter that also builds on markup_fmt
+
 ## Releasing
 
 Version is defined in one place: `Cargo.toml`. Both `pyproject.toml` and `__init__.__version__` read from it automatically.
